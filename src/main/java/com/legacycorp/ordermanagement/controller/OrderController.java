@@ -1,0 +1,3 @@
+package com.legacycorp.ordermanagement.controller;
+import com.legacycorp.ordermanagement.model.Order; import com.legacycorp.ordermanagement.service.OrderService; import org.springframework.web.bind.annotation.*; import java.util.List;
+@RestController @RequestMapping("/api/orders") public class OrderController { private final OrderService service; public OrderController(OrderService s){service=s;} @GetMapping public List<Order> all(){return service.findAll();} @GetMapping("/{id}") public Order byId(@PathVariable Long id){return service.findById(id);} @PostMapping public Order create(@RequestBody Order o){return service.save(o);} }
